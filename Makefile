@@ -16,7 +16,7 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 OBJ_PATH = obj/
 SRC_PATH = utils/
 
-SRC = main.c parsing.c
+SRC = main.c parsing.c ft_utils_node_remains.c ft_utils_node.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJ = $(SRC:.c=.o)
 OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
@@ -24,9 +24,6 @@ OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
 all: $(NAME)
 	@echo "$(BLUE)Compilation terminée"
 	@echo "$(RESET)"
-
-#$(MLX):
-#	make --no-print-directory -C $(MLX_DIR) -s -j all
 
 $(PRINTF):
 	@make --no-print-directory -C $(PRINTF_DIR)

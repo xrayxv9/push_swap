@@ -36,4 +36,5 @@ int main(int argc, char **argv)
 	}
 	l = parsing(argc, argv);
 	print_stack(l);
+	ft_lstclear(&l);
 }

@@ -33,9 +33,6 @@ void	ft_lstadd_front(t_list **lst, t_list *n)
 
 void	ft_lstdelone(t_list *lst)
 {
-	int	content;
-	
-	content = lst->content;
 	if (!lst)
 		return ;
 	free(lst);

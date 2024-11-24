@@ -1,27 +1,25 @@
 #include "ft_utils.h"
 
-int	ft_is_digit(char *s, t_list *l)
+int	ft_is_digit(char *s)
 {
 	int	i;
 
 	i = 0;
 	while (s[i])
 	{
-		if (!(s[i] == ' ' || (s[i] >= '\t' && s[i] <= '\r') &&
+		if (!(s[i] == ' ' || (s[i] >= '\t' && s[i] <= '\r') ||
 				(s[i] >= '0' && s[i] <= '9')))
 			return (0);
+		i++;
 	}
 	return (1);
 }
 
-void	addlist(char *s, t_list *l)
+void	addlist(char *s, t_list *l, int i)
 {
-	int		i;
 	int		nbr;
 	int		sign;
-	t_list	*tmp;
 
-	i = 0;
 	while (s[i])
 	{
 		nbr = 0;
@@ -36,14 +34,13 @@ void	addlist(char *s, t_list *l)
 		}
 		while (s[i] >= '0' && s[i] <= '9')
 		{
-			nbr = nbr * 10 + (s[i] + '0');
+			nbr = nbr * 10 + (s[i] - '0');
 			i++;
 		}
-		tmp = ft_lstnew(nbr);
-		ft_lstadd_back(&l, tmp);
+		ft_lstadd_back(&l,  ft_lstnew(nbr * sign));
 	}
 	if (s[i] != '\0')
-		addlist(s + i, l);
+		addlist(s, l, i);
 }
 
 t_list	*parsing(int argc, char **t)
@@ -52,16 +49,17 @@ t_list	*parsing(int argc, char **t)
 	int		i;
 
 	i = 1;
-	while (i <= argc)
+	l = NULL;
+	while (i < argc)
 	{
-		if (!ft_is_digit(t[i], l))
+		if (!ft_is_digit(t[i]))
 		{
 			ft_lstclear(&l);
 			return (NULL);
 		}
-		addlist(t[i], l);
+		addlist(t[i], l, 0);
 		i++;
 	}
-
+	
 	return (l);
 }
