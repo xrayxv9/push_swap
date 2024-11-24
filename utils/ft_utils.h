@@ -13,6 +13,8 @@
 # define FT_UTILS_H
 
 # include <stdlib.h>
+# include "../printf/ft_printf.h"
+
 
 typedef struct s_list
 {
@@ -21,6 +23,8 @@ typedef struct s_list
 }					t_list;
 
 t_list	*ft_lstmap(int *lst);
+
+t_list	*parsing(int argc, char **t);
 
 void	ft_lstadd_back(t_list **lst, t_list *n);
 
@@ -34,7 +38,7 @@ t_list	*ft_lstlast(t_list *lst);
 
 void	ft_lstclear(t_list **lst);
 
-
+int		ft_lstlen(t_list *l);
 
 
 #endif

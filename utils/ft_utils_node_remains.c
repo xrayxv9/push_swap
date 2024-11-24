@@ -21,8 +21,6 @@ void	ft_lstadd_back(t_list **lst, t_list *n)
 		*lst = n;
 }
 
-// voir pour faire lire a un endroit où je n'ai pas le droit ? 
-// voir dans un main spécial que cela ne face aucun leak ou seg fault 
 t_list	*ft_lstmap(int *lst)
 {
 	t_list	*result;
@@ -47,4 +45,18 @@ t_list	*ft_lstmap(int *lst)
 		i++;
 	}
 	return (result);
+}
+
+int	ft_lstlen(t_list *l)
+{
+	int		i;
+	t_list	*curr;
+
+	curr = l;
+	while(curr)
+	{
+		curr = curr->next;
+		i++;
+	}
+	return (i);
 }
