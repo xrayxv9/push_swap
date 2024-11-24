@@ -9,15 +9,15 @@ CFLAGS = -g -Werror -Wextra -Wall
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
+	@ar -rcs $(NAME) $(OBJ)
 
 %.o : %.c
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 	
 clean : 
-	rm -f $(OBJ) $(B_OBJ)
+	@rm -f $(OBJ) $(B_OBJ)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
