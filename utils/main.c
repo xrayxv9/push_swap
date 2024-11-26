@@ -10,6 +10,7 @@
 //                                                                            //
 // ************************************************************************** //
 #include "ft_utils.h"
+
 void	print_stack(t_list *stack1)
 {
 	t_list	*curr;
@@ -22,19 +23,21 @@ void	print_stack(t_list *stack1)
 		ft_printf("%d |\n", curr->content);
 		curr = curr->next;
 	}
-	ft_printf("_____________________\n");
+	ft_printf("____________\n");
 }
 
 int main(int argc, char **argv)
 {
 	t_list	*l;
 
+	l = NULL;
 	if (argc < 2)
 	{
 		ft_printf("Could you please give me something to sort ?");
 		return (-1);
 	}
-	l = parsing(argc, argv);
-	print_stack(l);
+	l = parsing(argc, argv, l);
+	if (l)	
+		print_stack(l);
 	ft_lstclear(&l);
 }

@@ -14,7 +14,7 @@
 
 # include <stdlib.h>
 # include "../printf/ft_printf.h"
-
+# include <stddef.h>
 
 typedef struct s_list
 {
@@ -22,9 +22,11 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+t_list	*error(int error, t_list *l);
+
 t_list	*ft_lstmap(int *lst);
 
-t_list	*parsing(int argc, char **t);
+t_list	*parsing(int argc, char **t, t_list *l);
 
 void	ft_lstadd_back(t_list **lst, t_list *n);
 

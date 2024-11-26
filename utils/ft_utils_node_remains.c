@@ -53,6 +53,7 @@ int	ft_lstlen(t_list *l)
 	t_list	*curr;
 
 	curr = l;
+	i = 0;
 	while(curr)
 	{
 		curr = curr->next;
