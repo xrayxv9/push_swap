@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:13:14 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/26 16:55:12 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/26 18:27:45 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_utils.h"
@@ -41,19 +41,22 @@ void	add(int *i, int *space, int *sign, char c)
 
 int	addlist(char *s, t_list **l, int i, int space)
 {
-	int		nbr;
+	long long		nbr;
+	int				len;
 
-	while (s[i])
-	{
-		nbr = ft_atoi(s, &i, space);
-		if (space - 1 > 0 &&
-			ft_check_overflow(s + ((i - 1) - ft_recur(nbr, NULL, 0)), nbr))
-			ft_lstadd_back(l,  ft_lstnew(nbr));
-		else 
-			return (0);
-		break ;
-	}
-	if (s[i] != '\0' && check_space(s + i))
+	len = ft_strlen_space(s + i);
+	if (s[i] == '-' || s[i] == '+')
+		len++;
+	if (len > 10)
+		return (0);
+	nbr = ft_atoll(s, &i, &space);
+	if (nbr <= -2147483648 || nbr >= 2147483647)
+		return (0);
+	if (space - 1 > 0)
+		ft_lstadd_back(l,  ft_lstnew((int)nbr));
+	else 
+		return (0);
+	if (s[i] != '\0' && check_strings(s + i))
 		return (addlist(s, l, i, 1));
 	return (1);
 }

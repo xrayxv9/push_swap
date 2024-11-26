@@ -26,17 +26,7 @@ void	add(int *i, int *space, int *sign, char c);
 
 int		check_strings(char *s);
 
-int	ft_check_overflow(char *s, int overflow);
-
-int		ft_recur(int n, char *ptr, int l);
-
-char	*ft_itoa(int n);
-
-int ft_atoi(char *s, int *i, int space);
-
-int check_strings(char *s);
-
-int	check_space(char *s);
+long long	ft_atoll(char *s, int *i, int *space);
 
 int		ft_strlen_space(char *s);
 
