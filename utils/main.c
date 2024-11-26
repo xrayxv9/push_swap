@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 		return (-1);
 	}
 	l = parsing(argc, argv, l);
-	if (l)	
+	if (l)
 		print_stack(l);
 	ft_lstclear(&l);
 }

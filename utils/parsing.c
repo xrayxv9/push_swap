@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:13:14 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/26 10:24:48 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/26 16:55:12 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_utils.h"
@@ -42,28 +42,18 @@ void	add(int *i, int *space, int *sign, char c)
 int	addlist(char *s, t_list **l, int i, int space)
 {
 	int		nbr;
-	int		sign;
 
 	while (s[i])
 	{
-		nbr = 0;
-		sign = 1;
-		while (s[i] == ' ' || (s[i] >= '\t' && s[i] <= '\r'))
-			add(&i, &space, NULL, '0');
-		if (s[i] == '+' || s[i] == '-')
-			add(&i, NULL, &sign, s[i]);
-		while (s[i] >= '0' && s[i] <= '9')
-		{
-			nbr = nbr * 10 + (s[i] - '0');
-			i++;
-		}
-		if (space - 1 > 0)
-			ft_lstadd_back(l,  ft_lstnew(nbr * sign));
+		nbr = ft_atoi(s, &i, space);
+		if (space - 1 > 0 &&
+			ft_check_overflow(s + ((i - 1) - ft_recur(nbr, NULL, 0)), nbr))
+			ft_lstadd_back(l,  ft_lstnew(nbr));
 		else 
 			return (0);
 		break ;
 	}
-	if (s[i] != '\0')
+	if (s[i] != '\0' && check_space(s + i))
 		return (addlist(s, l, i, 1));
 	return (1);
 }
@@ -96,13 +86,13 @@ t_list	*parsing(int argc, char **t, t_list *l)
 	l = NULL;
 	while (i < argc)
 	{
-		if (!ft_is_digit(t[i]))
-			return (error(0, l));
+		if (!ft_is_digit(t[i]) || !check_strings(t[i]))
+			return (error(l));
 		if (!addlist(t[i], &l, 0, 2))
-			return (error(1, l));
+			return (error(l));
 		i++;
 	}
 	if (!check_doubles(l))
-		return (error(2, l));
+		return (error(l));
 	return (l);
 }

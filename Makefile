@@ -16,7 +16,7 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 OBJ_PATH = obj/
 SRC_PATH = utils/
 
-SRC = main.c parsing.c ft_utils_node_remains.c ft_utils_node.c
+SRC = main.c parsing.c ft_utils_node_remains.c ft_utils_node.c parsing2.c gen_utils.c ft_itoa.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJ = $(SRC:.c=.o)
 OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
