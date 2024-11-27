@@ -14,12 +14,25 @@ PRINTF_DIR = printf
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 OBJ_PATH = obj/
-SRC_PATH = utils/
+PARSING_PATH = parsing/
+UTIL_PATH = utils/
+SRC_PATH = src/
 
-SRC = main.c parsing.c ft_utils_node_remains.c ft_utils_node.c parsing2.c gen_utils.c ft_itoa.c
+SRC = main.c
+UTIL = push_rotate.c reverse_push.c
+PARSING = parsing.c ft_utils_node_remains.c ft_utils_node.c parsing2.c gen_utils.c ft_itoa.c
+
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
-OBJ = $(SRC:.c=.o)
+PARSINGS = $(addprefix $(PARSING_PATH), $(PARSING))
+UTILS = $(addprefix $(UTIL_PATH), $(UTIL))
+
+OBJ = $(PARSING:.c=.o)
+OBJ_UTIL = $(UTIL:.c=.o)
+OBJ_SRC = $(SRC:.c=.o)
+
 OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
+OBJS_UTIL = $(addprefix $(OBJ_PATH), $(OBJ_UTIL))
+OBJS_SRC = $(addprefix $(OBJ_PATH), $(OBJ_SRC))
 
 all: $(NAME)
 	@echo "$(BLUE)Compilation terminée"
@@ -28,11 +41,17 @@ all: $(NAME)
 $(PRINTF):
 	@make --no-print-directory -C $(PRINTF_DIR)
 
-$(NAME): $(PRINTF) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(PRINTF) -o $@
+$(NAME): $(PRINTF) $(OBJS) $(OBJS_UTIL) $(OBJS_SRC)
+	@$(CC) $(CFLAGS) $(OBJS) $(OBJS_UTIL) $(OBJS_SRC) $(PRINTF) -o $@
+
+$(OBJ_PATH)%.o: $(PARSING_PATH)%.c
+	@mkdir -p $(OBJ_PATH)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_PATH)%.o: $(UTIL_PATH)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir -p $(OBJ_PATH)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
