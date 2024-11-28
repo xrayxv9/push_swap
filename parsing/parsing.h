@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:14:15 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/27 11:14:18 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/28 11:05:18 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PARSING_H
@@ -51,5 +51,7 @@ t_list		*ft_lstlast(t_list *lst);
 void		ft_lstclear(t_list **lst);
 
 int			ft_lstlen(t_list *l);
+
+int			ft_recur(int n, char *ptr, int l);
 
 #endif

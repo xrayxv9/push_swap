@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   pre_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
+/*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 11:11:19 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/28 11:03:31 by xray             ###   ########.fr       */
+/*   Created: 2024/11/28 14:36:54 by xray              #+#    #+#             */
+/*   Updated: 2024/11/28 14:51:24 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef UTILS_H
-#define UTILS_H
+#include "sort.h"
 
-# include "../parsing/parsing.h"
 
-void	push(t_list **stack, t_list **stack_to);
 
-void	rotate(t_list **stack);
 
-void	rrotate(t_list **stack);
 
-void	swap(t_list **stack);
 
-#endif
+
+void	get_info(t_psort *ps)
+{
+	
+}
+
+
+void	pre_sort(t_list	*s)
+{
+	t_psort	ps;
+
+	ps.len = ft_lstlen(s);
+	if (ps.len > 3)
+	{
+		get_info(&ps);
+	}
+	else 
+		return ;
+}

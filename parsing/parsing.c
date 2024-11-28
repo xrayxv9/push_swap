@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:13:14 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/27 11:13:35 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/28 14:48:13 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -50,7 +50,7 @@ int	addlist(char *s, t_list **l, int i, int space)
 	if (len > 10)
 		return (0);
 	nbr = ft_atoll(s, &i, &space);
-	if (nbr <= -2147483648 || nbr >= 2147483647)
+	if (nbr < -2147483648 || nbr > 2147483647)
 		return (0);
 	if (space - 1 > 0)
 		ft_lstadd_back(l, ft_lstnew((int)nbr));
