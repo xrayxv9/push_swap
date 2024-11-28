@@ -6,7 +6,7 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:36:54 by xray              #+#    #+#             */
-/*   Updated: 2024/11/28 15:36:03 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/28 14:55:39 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
@@ -17,7 +17,15 @@
 
 
 
+void	get_info(t_psort *ps)
+{
+	ps->first = ps->len / 4;
+	ps->second = (ps->len - ps->first) / 3;
+	ps->third = (ps->len - ps->second) / 2;
+	ps->fourth = ps->len - ps->third;
 
+	ft_printf("1.%d\n2.%d\n3.%d\n4.%d", ps->first, ps->second, ps->third, ps->fouth);
+}
 
 
 void	pre_sort(t_list	*s)
@@ -27,7 +35,7 @@ void	pre_sort(t_list	*s)
 	ps.len = ft_lstlen(s);
 	if (ps.len > 3)
 	{
-		get_info(&ps, s);
+		get_info(&ps);
 	}
 	else 
 		return ;

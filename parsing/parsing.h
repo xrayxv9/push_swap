@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:14:15 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/28 11:05:18 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/28 15:45:31 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PARSING_H
@@ -27,6 +27,12 @@ int			check_m_p(char *s);
 void		add(int *i, int *space, int *sign, char c);
 
 int			check_strings(char *s);
+
+int			is_sorted(t_list *s);
+
+int			find_greater(t_list *s);
+
+void		print_stack(t_list *stack1);
 
 long long	ft_atoll(char *s, int *i, int *space);
 

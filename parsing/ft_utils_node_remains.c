@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:01:14 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/27 11:13:04 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/28 15:39:54 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -50,7 +50,9 @@ int	ft_lstlen(t_list *l)
 {
 	int		i;
 	t_list	*curr;
-
+	
+	if (!l)
+		return (0);
 	curr = l;
 	i = 0;
 	while (curr)
