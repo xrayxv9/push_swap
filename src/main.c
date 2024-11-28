@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:59:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/28 17:55:11 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/28 21:20:25 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../parsing/parsing.h"
@@ -26,12 +26,14 @@ int	main(int argc, char **argv)
 		return (-1);
 	}
 	s = parsing(argc, argv, s);
+	if (!s)
+		return (-1);
 	if (!is_sorted(s))
 	{
 		pre_sort(s);
+		ft_lstclear(&s);
+		ft_lstclear(&s2);
 	}
 	else 
 		ft_printf("The given list is Already sorted.");
-	ft_lstclear(&s);
-	ft_lstclear(&s2);
 }

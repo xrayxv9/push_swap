@@ -6,70 +6,51 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:12:20 by xray              #+#    #+#             */
-/*   Updated: 2024/11/28 17:55:07 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/28 21:18:51 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
 
-int	bigger(t_list *l)
+t_list	*bigger(t_list **l)
 {
 	t_list	*curr;
 	t_list	*tmp;
 
-	tmp = l;
-	curr = l;
+	tmp = *l;
+	curr = *l;
 	while (curr)
 	{
-		if (tmp->content > curr->content)
+		if (tmp->content < curr->content)
 			tmp = curr;
 		curr = curr->next;
 	}
-	return (tmp->content);
-}
-
-void	replace_bigger(t_list **l, t_list	*curr)
-{
-	t_list	*c;
-	t_list	*tmp;
-
-	tmp = NULL;
-	c = *l;
-	while (c->next)
-	{
-		if (curr->content < c->content)
-		{
-			tmp = curr;
-		}
-		c = c->next;
-	}
-	if (tmp)
-		ft_printf("test : %d\n", tmp->content);
-	if (tmp)
-		c = tmp;
+	return (tmp);
 }
 
 int	first_l(t_psort *ps, t_list *s)
 {
 	t_list	*curr;
 	t_list	*l;
-	int		bg;
+	t_list	*tmp;
+	int		res;
 
 	curr = s;
 	l = NULL;
 	while (curr)
 	{
+		tmp = bigger(&l);
 		if (ft_lstlen(l) != ps->first)
 		{
 			ft_lstadd_back(&l, ft_lstnew(curr->content));
 		}
-		else
-			replace_bigger(&l, curr);
+		else if (curr->content < tmp->content)
+			tmp->content = curr->content;
 		curr = curr->next;
 	}
 	print_stack(l);
-	bg = bigger(l);
+	res = bigger(&l)->content;
 	ft_lstclear(&l);
-	return (bg);
+	return (res);
 }
 
 
