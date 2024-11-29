@@ -6,7 +6,7 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:28:46 by xray              #+#    #+#             */
-/*   Updated: 2024/11/28 15:35:20 by xray             ###   ########.fr       */
+/*   Updated: 2024/11/29 14:54:50 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef SORT_H
@@ -32,6 +32,10 @@ void	pre_sort(t_list	*s);
 
 void	get_info(t_psort *ps, t_list *s);
 
+t_list	*bigger(t_list **l);
 
+int		first_l(t_psort *ps, t_list *s);
+
+int		second_l(t_list *s, int	limit, int limit_len);
 
 #endif
