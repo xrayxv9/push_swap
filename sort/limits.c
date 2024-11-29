@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:45:49 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/29 15:14:47 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/11/29 16:52:24 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
@@ -48,17 +48,17 @@ int	second_l(t_list *s, int limit, int limit_len)
 	while (curr)
 	{
 		tmp = bigger(&l);
-		if (ft_lstlen(l) < limit_len)
+		if (ft_lstlen(l) < limit_len && curr->content > limit)
 			ft_lstadd_back(&l, ft_lstnew(curr->content));
 		else 
 		{
-			if (curr->content < limit)
+		 	if (curr->content > limit)
 			{
-				if (tmp->content < curr->content)
-					curr->content = tmp->content;
+				if (tmp->content > curr->content)
+					tmp->content = curr->content;
 			}
 		}
-	curr = curr->next;
+		curr = curr->next;
 	}
 	res = tmp->content;
 	ft_lstclear(&l);
