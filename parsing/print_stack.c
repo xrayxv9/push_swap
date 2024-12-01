@@ -6,7 +6,7 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:44:27 by xray              #+#    #+#             */
-/*   Updated: 2024/11/28 20:22:23 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/01 17:29:53 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -51,6 +51,8 @@ void	print_stack(t_list *stack1)
 	int		greater;
 	int		i;
 
+	if (!stack1)
+		return ;
 	greater = find_greater(stack1);
 	curr = stack1;
 	if (!stack1)
