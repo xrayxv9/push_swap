@@ -6,7 +6,7 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:12:20 by xray              #+#    #+#             */
-/*   Updated: 2024/12/01 23:51:29 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/02 13:23:04 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
@@ -74,7 +74,7 @@ int	remains(t_list *s, int limit, int limit_len)
 		}
 		curr = curr->next;
 	}
-	res = tmp->content;
+	res = bigger(&l)->content;
 	ft_lstclear(&l);
 	return (res);
 }
@@ -87,6 +87,6 @@ void	get_info(t_psort *ps, t_list *s)
 	ps->fourth = ps->len - ps->third - ps->first - ps->second;
 	ps->to_displace = 0;
 	ps->first_l = first_l(ps, s);
-	ps->second_l = remains(s, ps->second, ps->first_l);
-	ps->third_l = remains(s, ps->third, ps->second_l);
+	ps->second_l = remains(s, ps->first_l, ps->second);
+	ps->third_l = remains(s, ps->second_l, ps->third);
 }

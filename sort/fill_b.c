@@ -6,26 +6,48 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 12:59:21 by xray              #+#    #+#             */
-/*   Updated: 2024/12/01 23:04:58 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/02 13:25:14 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
 
-void	reset(t_list **sa, t_list **sb,t_psort ps)
+void	reset(t_list **sa, t_list **sb, int *td, int limit)
 {
 	t_list	*curr;
+	int		code;
 
 	curr = *sb;
-	while (ps.to_displace)
+	while (*td)
 	{
-		push(sb, sa, 1);
+		if (curr->content <= limit)
+			code = 1;
+		else
+			code = 2;
 		curr = curr->next;
-		ps.to_displace--;
+		if (code == 1)
+			rotate(sb, 2);
+		else
+			push(sb, sa, 1);
+		(*td)--;
 	}
 }
 
+void	rpr_pr(t_list	**sa, t_list **sb, int code)
+{
+	if (code == 1)
+	{
+		push(sa, sb, 2);
+		rotate(sb, 2);
+	}
+	else
+	{
+		rrotate(sa, 1);
+		push(sa, sb, 2);
+		rotate(sb, 2);
+	}
+}
 
-void	fill_b(t_list **sa, t_list **sb,t_psort ps, int limit)
+void	fill_b(t_list **sa, t_list **sb,t_psort *ps, int limit)
 {
 	t_list	*curr;
 	t_list	*last;
@@ -35,34 +57,21 @@ void	fill_b(t_list **sa, t_list **sb,t_psort ps, int limit)
 	{
 		last = ft_lstlast(*sa);
 		if (curr->content <= limit)
-		{
-			push(sa, sb, 2);
-			rotate(sb, 2);
-		}
+			rpr_pr(sa, sb, 1);
 		else if (last->content < limit)
-		{
-			rrotate(sa, 1);
-			push(sa, sb, 2);
-			rotate(sb, 2);
-		}
+			rpr_pr(sa, sb, 2);
 		else
 		{
 			push(sa, sb, 2);
-			ps.to_displace++;
+			ps->to_displace++;
 		}
 		curr = *sa;
 	}
-	reset(sa, sb, ps);
 }
 
 void	stackb_fill(t_list **sa, t_list **sb, t_psort *ps)
 {
-	ft_printf("first_l  : %d\n", ps->first_l);
-	ft_printf("second_l : %d\n", ps->second_l);
-	ft_printf("third_l  : %d\n", ps->third_l);
-
-	fill_b(sa, sb, *ps, ps->first_l);
-	fill_b(sa, sb, *ps, ps->second_l);
-	fill_b(sa, sb, *ps, ps->third_l);
-	fill_b(sa, sb, *ps, 2147483647);
+	fill_b(sa, sb, ps, ps->first_l);
+	reset(sa, sb, &ps->to_displace, ps->second_l);
+	fill_b(sa, sb, ps, ps->third_l);
 }

@@ -6,7 +6,7 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:28:46 by xray              #+#    #+#             */
-/*   Updated: 2024/12/01 16:10:50 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/02 10:37:41 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef SORT_H
@@ -14,6 +14,12 @@
 
 # include "../parsing/parsing.h"
 # include "../utils/utils.h"
+
+typedef struct s_dual
+{
+	int	limit;
+	int	len;
+}		t_dual;
 
 typedef struct s_psort
 {
