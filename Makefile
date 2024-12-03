@@ -19,7 +19,7 @@ UTIL_PATH = utils/
 SRC_PATH = src/
 SORT_PATH = sort/
 
-SORT = pre_sort.c get_infos.c fill_b.c
+SORT = pre_sort.c get_infos.c fill_b.c fct.c
 SRC = main.c
 UTIL = push_rotate.c
 PARSING = parsing.c ft_utils_node_remains.c ft_utils_node.c parsing2.c gen_utils.c ft_itoa.c \
