@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:56:15 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/28 20:48:37 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/06 15:38:53 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(int content)
 		return (NULL);
 	elem->content = content;
 	elem->next = NULL;
+	elem->index = 0;
 	return (elem);
 }
 

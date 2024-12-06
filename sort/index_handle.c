@@ -6,28 +6,35 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:41:22 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/06 14:52:23 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/06 16:47:57 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
 
-void	adapt(int	nbr, t_dual *dual, t_list **sa, int i)
+int	smaller_index(t_list **sa)
+{
+	t_list	*curr;
+	t_list	*tmp;
+
+	tmp = *sa;
+	curr = (*sa)->next;
+	while (curr)
+	{
+		if (curr->content < tmp->content && !curr->index)
+			tmp = curr;
+		curr = curr->next;
+	}
+	return (tmp->content);
+}
+
+void	change_index(int nbr, t_list **sa, int i)
 {
 	t_list	*curr;
 
 	curr = *sa;
-	if (dual->code == 1)
-		dual->smaller = nbr;
-	else 
-		dual->bigger = nbr;
-	while (i-- > 0)
-	{
-		if (curr->content > nbr)
-			curr->index++;
-		else if (curr->content < nbr)
-			curr->index--;
+	while (curr->content != nbr)
 		curr = curr->next;
-	}
+	curr->index = i;
 }
 
 void print_index(t_list *sa)
@@ -46,27 +53,13 @@ void	give_index(t_list	**sa)
 {
 	int	i;
 	int	max;
-	t_dual dual;
-	t_list	*curr;
 
-	curr = *sa;
-	dual.bigger = 0;
-	dual.smaller = 0;
-	i = 0;
+	i = 1;
 	max = ft_lstlen(*sa);
-	while (i < max)
+	while (i <= max)
 	{
-		curr->index = i;
-		if (curr->content < dual.smaller)
-		{
-			dual.code = 1;
-			adapt(curr->content, &dual, sa, i - 1);
-		}
-		else if (curr->content > dual.bigger)
-		{
-			dual.code = 2;
-			adapt(curr->content, &dual, sa, i - 1);
-		}
+		change_index(smaller_index(sa), sa, i);
+	
 		i++;
 	}
 	print_index(*sa);
