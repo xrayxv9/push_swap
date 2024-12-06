@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:59:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/02 11:37:27 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/03 10:56:15 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../parsing/parsing.h"
@@ -16,10 +16,8 @@
 int	main(int argc, char **argv)
 {
 	t_list	*s;
-	t_list	*s2;
 	
 	s = NULL;
-	s2 = NULL;
 	if (argc < 2)
 	{
 		ft_printf("Could you please give me something to sort ?");
@@ -32,9 +30,4 @@ int	main(int argc, char **argv)
 		pre_sort(s);
 	else 
 		ft_printf("The given list is Already sorted.");
-	if (s)
-	{
-		ft_lstclear(&s);
-		ft_lstclear(&s2);
-	}
 }

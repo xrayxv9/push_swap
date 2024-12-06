@@ -6,7 +6,7 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 12:59:21 by xray              #+#    #+#             */
-/*   Updated: 2024/12/03 10:21:20 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/03 10:56:35 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
@@ -74,7 +74,6 @@ void	stackb_fill(t_list **sa, t_list **sb, t_psort *ps)
 	int tmp;
 
 	tmp = mini(*sa);
-	ft_printf("mini : %d\n", tmp);
 	ps->limit = ps->second_l;
 	fill_b(sa, sb, ps, ps->third_l);
 	ps->limit = ps->first_l;
