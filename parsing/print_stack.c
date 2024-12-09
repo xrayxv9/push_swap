@@ -6,7 +6,7 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:44:27 by xray              #+#    #+#             */
-/*   Updated: 2024/12/01 17:29:53 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/09 11:11:49 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -70,5 +70,3 @@ void	print_stack(t_list *stack1)
 		curr = curr->next;
 	}
 }
-
-

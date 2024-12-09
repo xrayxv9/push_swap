@@ -6,7 +6,7 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:28:46 by xray              #+#    #+#             */
-/*   Updated: 2024/12/06 14:41:01 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/09 09:53:14 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef SORT_H
@@ -22,6 +22,10 @@ typedef struct s_dual
 	int	code;
 }	t_dual;
 
-void	give_index(t_list	**sa);
+void	give_index(t_list	**sa, t_list **sb);
+
+int		max_bytes(t_list *sa);
+
+void	radix(t_list **sa, t_list **sb);
 
 #endif

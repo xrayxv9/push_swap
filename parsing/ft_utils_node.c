@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:56:15 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/06 15:38:53 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/09 10:46:47 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -26,10 +26,16 @@ t_list	*ft_lstnew(int content)
 
 void	ft_lstadd_front(t_list **lst, t_list *n)
 {
-	if (!lst)
-		return ;
-	n->next = *lst;
-	*lst = n;
+	if (!lst || !(*lst))
+	{
+		n->next = NULL;
+		*lst = n;
+	}
+	else
+	{
+		n->next = *lst;
+		*lst = n;
+	}
 }
 
 void	ft_lstdelone(t_list *lst)
