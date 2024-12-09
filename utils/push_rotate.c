@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:05:06 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/09 10:49:49 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/09 15:19:39 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -31,6 +31,8 @@ void	rotate(t_list **stack, int code)
 	t_list	*curr;
 	t_list	*tmp;
 
+	if (!(*stack)->next)
+		return ;
 	tmp = *stack;
 	curr = *stack;
 	*stack = (*stack)->next;
