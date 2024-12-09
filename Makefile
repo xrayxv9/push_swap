@@ -22,8 +22,7 @@ SORT_PATH = sort/
 SORT = index_handle.c bytes_handle.c radix.c
 SRC = main.c
 UTIL = push_rotate.c
-PARSING = parsing.c ft_utils_node_remains.c ft_utils_node.c parsing2.c gen_utils.c ft_itoa.c \
-		  print_stack.c
+PARSING = parsing.c ft_utils_node_remains.c ft_utils_node.c parsing2.c gen_utils.c ft_itoa.c
 
 SORTS = $(addprefix $(SORT_PATH), $(SORT))  
 SRCS = $(addprefix $(SRC_PATH), $(SRC))

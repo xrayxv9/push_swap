@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 12:19:20 by cmorel            #+#    #+#             */
-/*   Updated: 2024/11/27 11:13:12 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/09 11:13:54 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "parsing.h"
@@ -43,4 +43,18 @@ long long	ft_atoll(char *s, int *i, int *space)
 	}
 	nbr *= sign;
 	return (nbr);
+}
+
+int	is_sorted(t_list *s)
+{
+	t_list	*curr;
+
+	curr = s;
+	while (curr->next)
+	{
+		if (curr->content > curr->next->content)
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
 }
