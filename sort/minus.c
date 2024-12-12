@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 10:59:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/12 16:08:03 by cmorel           ###   ########.fr       */
+/*   Created: 2024/12/12 15:50:01 by cmorel            #+#    #+#             */
+/*   Updated: 2024/12/12 17:27:29 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-// #include "../parsing/parsing.h"
-// #include "../utils/utils.h"
-// #include "../sort/sort.h"
-//
-// int	main(int argc, char **argv)
-// {
-// 	t_list	*sa;
-// 	t_list	*sb;
-//
-// 	sb = NULL;
-// 	sa = NULL;
-// 	if (argc < 2)
-// 		return (-1);
-// 	sa = parsing(argc, argv, sa);
-// 	if (!sa)
-// 		return (-1);
-// 	if (!is_sorted(sa))
-// 		give_index(&sa, &sb);
-// 	if (sa)
-// 		ft_lstclear(&sa);
-// }
+#include "sort.h"
+
+ 
+
+void	handle_under_five(t_list **sa, t_list **sb)
+{
+	
+}
+
+void	handler(t_list	**sa, t_list **sb, int len)
+{
+	t_list *curr;
+
+	if (len == 2)
+		rotate(sa, 'a');
+	else 
+	{
+		handle_under_five(sa, sb);
+	}
+}

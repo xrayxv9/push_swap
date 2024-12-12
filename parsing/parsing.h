@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:14:15 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/06 11:41:54 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/12 16:12:26 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PARSING_H
@@ -32,8 +32,6 @@ int			check_strings(char *s);
 int			is_sorted(t_list *s);
 
 int			find_greater(t_list *s);
-
-void		print_stack(t_list *stack1);
 
 long long	ft_atoll(char *s, int *i, int *space);
 

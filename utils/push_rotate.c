@@ -6,10 +6,22 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:05:06 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/09 15:19:39 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/12 16:20:43 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
+#include "../parsing/parsing.h"
+#include "../sort/sort.h"
+
+void		print_stack(t_list *stack1)
+{
+	t_list *curr = stack1;
+	while (curr)
+	{
+		ft_printf("%d  |\n", curr->content);
+		curr = curr->next;
+	}
+}
 
 void	push(t_list **stack, t_list **stack_to, int code)
 {
@@ -44,4 +56,36 @@ void	rotate(t_list **stack, int code)
 		ft_printf("ra\n");
 	else
 		ft_printf("rb\n");
+}
+
+void	rrotate(t_list **stack, int code)
+{
+	t_list	*tmp;
+	t_list	*curr;
+
+	tmp = *stack;
+	curr = *stack;
+	while (curr->next->next)
+		curr = curr->next;
+	curr->next->next = tmp;
+	(*stack) = curr->next;
+	curr->next = NULL;
+	if (code == 1)
+		ft_printf("rra\n");
+	else
+		ft_printf("rrb\n");
+}
+
+void	swap(t_list **stack, int code)
+{
+	t_list	*tmp;
+
+	tmp = (*stack)->next;
+	(*stack)->next = (*stack)->next->next;
+	tmp->next = (*stack);
+	(*stack) = tmp;
+	if (code == 1)
+		ft_printf("sa\n");
+	else
+		ft_printf("sb\n");
 }

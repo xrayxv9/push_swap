@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:11:19 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/09 11:16:02 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/12 16:21:21 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef UTILS_H
@@ -17,5 +17,9 @@
 void	push(t_list **stack, t_list **stack_to, int code);
 
 void	rotate(t_list **stack, int code);
+
+void	rrotate(t_list **stack, int code);
+
+void	swap(t_list **stack, int code);
 
 #endif

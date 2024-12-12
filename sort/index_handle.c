@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:41:22 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/09 11:17:48 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/12 16:06:32 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
@@ -52,6 +52,7 @@ void	give_index(t_list	**sa, t_list **sb)
 	int		max;
 	t_dual	dual;
 	t_list	*curr;
+	int		len;
 
 	i = 1;
 	curr = *sa;
@@ -63,5 +64,9 @@ void	give_index(t_list	**sa, t_list **sb)
 		i++;
 		curr = curr->next;
 	}
-	radix(sa, sb);
+	len = ft_lstlen(*sa);
+	if (len <= 5)
+		handler(sa, sb, len);
+	else
+		radix(sa, sb);
 }

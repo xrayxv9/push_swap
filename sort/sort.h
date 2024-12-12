@@ -6,7 +6,7 @@
 /*   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:28:46 by xray              #+#    #+#             */
-/*   Updated: 2024/12/09 09:53:14 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/12 15:53:52 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef SORT_H
@@ -27,5 +27,7 @@ void	give_index(t_list	**sa, t_list **sb);
 int		max_bytes(t_list *sa);
 
 void	radix(t_list **sa, t_list **sb);
+
+void	handler(t_list	**sa, t_list **sb, int len);
 
 #endif
