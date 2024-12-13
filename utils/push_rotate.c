@@ -6,22 +6,10 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:05:06 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/12 16:20:43 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/13 16:29:36 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
-#include "../parsing/parsing.h"
-#include "../sort/sort.h"
-
-void		print_stack(t_list *stack1)
-{
-	t_list *curr = stack1;
-	while (curr)
-	{
-		ft_printf("%d  |\n", curr->content);
-		curr = curr->next;
-	}
-}
 
 void	push(t_list **stack, t_list **stack_to, int code)
 {
@@ -70,7 +58,7 @@ void	rrotate(t_list **stack, int code)
 	curr->next->next = tmp;
 	(*stack) = curr->next;
 	curr->next = NULL;
-	if (code == 1)
+	if (code == 'a')
 		ft_printf("rra\n");
 	else
 		ft_printf("rrb\n");
@@ -84,7 +72,7 @@ void	swap(t_list **stack, int code)
 	(*stack)->next = (*stack)->next->next;
 	tmp->next = (*stack);
 	(*stack) = tmp;
-	if (code == 1)
+	if (code == 'a')
 		ft_printf("sa\n");
 	else
 		ft_printf("sb\n");
