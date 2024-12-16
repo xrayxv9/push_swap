@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:50:01 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/13 16:29:01 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/12/16 17:35:12 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
@@ -19,7 +19,13 @@ void	push_smaller(t_list **sa, t_list **sb)
 	while (i != 2)
 	{
 		while (((*sa)->index != 1 && i == 0) || ((*sa)->index != 2 && i == 1))
-			rotate(sa, 'a');
+		{
+			if (ft_lstlast(*sa))
+				rrotate(sa, 'a');
+			else
+				rotate(sa, 'a');
+		
+		}
 		push(sa, sb, 'b');
 		i++;
 	}
@@ -38,10 +44,7 @@ void	handle_three(t_list **sa, int code)
 			rotate(sa, 'a');
 		if (((*sa)->index == 5 && (code == 1))
 			|| ((*sa)->index == 3 && code == 2))
-		{
-			ft_printf("index : %d\n", (*sa)->index);
 			rotate(sa, 'a');
-		}
 		if (((*sa)->index == 4 && (code == 1)) || (*sa)->index == 2)
 			swap(sa, 'a');
 	}
