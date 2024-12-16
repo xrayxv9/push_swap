@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:50:01 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/16 17:35:12 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/16 18:13:33 by xray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
@@ -20,7 +20,7 @@ void	push_smaller(t_list **sa, t_list **sb)
 	{
 		while (((*sa)->index != 1 && i == 0) || ((*sa)->index != 2 && i == 1))
 		{
-			if (ft_lstlast(*sa))
+			if (ft_lstlast(*sa)->index == 1)
 				rrotate(sa, 'a');
 			else
 				rotate(sa, 'a');
