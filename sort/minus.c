@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:50:01 by cmorel            #+#    #+#             */
-/*   Updated: 2024/12/16 18:13:33 by xray             ###   ########.fr       */
+/*   Updated: 2024/12/19 10:39:55 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "sort.h"
@@ -24,7 +24,6 @@ void	push_smaller(t_list **sa, t_list **sb)
 				rrotate(sa, 'a');
 			else
 				rotate(sa, 'a');
-		
 		}
 		push(sa, sb, 'b');
 		i++;
